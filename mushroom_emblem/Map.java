@@ -53,9 +53,9 @@ public class Map {
     }
 
     public static void main(String[] args) {
-        //song king = position: (0, 0), moverange: 5, attackrange: 1, attack: 10, health: 100, team: 1
-        Hero songKing = new Hero(0, 0, 5, 1, 10, 100, 1);
-        Hero kevinKoh = new Hero(1, 1, 5, 1, 15, 200, 2);
+        //song king = position: (0, 0), moverange: 5, attackrange: 1, attack: 10, health: 100, team: "red"
+        Hero songKing = new Hero(0, 0, 5, 1, 10, 100, "red");
+        Hero kevinKoh = new Hero(1, 1, 5, 1, 15, 200, "blue");
 
         Hero[][] someHeroes = {{songKing, null, null}, {null, kevinKoh, null}, {null, null, null}};
         Boolean[][] someWalls = {{false, true, false}, {false, false, false}, {false, false, false}};
@@ -65,7 +65,8 @@ public class Map {
         someHeroes = [[songKing, null, null],[null, kevinKoh, null],[null, null, null]];
         Boolean[][] someWalls = new Hero[][];
         someWalls = [[false, true, false], [false, false, false], [false, false, false]];
-    */
+        */
+        
         Map m = new Map(3, 3, someWalls, someHeroes);
 
         System.out.println("Is Song alive? " + songKing.isAlive());
@@ -79,7 +80,7 @@ public class Map {
         System.out.print("Song attacks... ");
         songKing.attack(kevinKoh);
 
-        songKing.changeY(1);
+        songKing.changeY(1); //this line is sketch
 
         System.out.print("Song attacks... ");
         songKing.attack(kevinKoh);

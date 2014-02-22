@@ -4,7 +4,7 @@ public class Hero {
     protected boolean hasAttacked;
     protected boolean isTurn;
     protected boolean isAlive;
-    protected int team;
+    protected String team;
     protected int moveRange;
     protected int attackRange;
     protected int damage;
@@ -12,7 +12,7 @@ public class Hero {
     protected int[] pos = new int[2];
 
     // Hero constructor
-    public Hero(int x, int y, int myMoveRange, int myAttackRange, int myDamage, int myHP, int t) {
+    public Hero(int x, int y, int myMoveRange, int myAttackRange, int myDamage, int myHP, String t) {
         moveRange = myMoveRange;
         attackRange = myAttackRange;
         damage = myDamage;
