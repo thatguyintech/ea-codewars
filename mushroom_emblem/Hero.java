@@ -52,7 +52,7 @@ public class Hero {
 
     // Checks if the enemy is in attack range.
     public boolean inAttackRange(Hero enemy) {
-        if ((Math.abs(enemy.xPos - xPos) <= attackRange) || (Math.abs(enemy.yPos - yPos) <= attackRange)) {
+        if (((Math.abs(enemy.getX() - xPos) <= attackRange && enemy.getY() == yPos) || ((Math.abs(enemy.getY() - yPos) <= attackRange) && enemy.getX() == xPos))) {
             return true;
         }
         return false;
@@ -74,6 +74,8 @@ public class Hero {
             enemy.hp -= damage;
             enemy.isAlive();
             hasAttacked = true;
+        } else {
+            System.out.println("Enemy out of range!");
         }
     }
 
@@ -81,7 +83,18 @@ public class Hero {
         return xPos;
     }
 
+    /** Change the old xPos to X. */
+    public void changeX(int x) {
+        xPos = x;
+    }
+
     public int getY() {
         return yPos;
     }
+
+    /** Change the old xPos to Y. */
+    public void changeY(int y) {
+        yPos = y;
+    }
+
 }
