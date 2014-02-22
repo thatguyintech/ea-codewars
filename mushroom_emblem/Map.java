@@ -53,14 +53,9 @@ public class Map {
     }
 
     public static void main(String[] args) {
-        Hero songKing = new Hero(5, 1, 10, 100);
-        Hero kevinKoh = new Hero(5, 1, 15, 200);
-        songKing.xPos = 0;
-        songKing.yPos = 0;
-        kevinKoh.xPos = 1;
-        kevinKoh.yPos = 1;
-        songKing.team = 1; // team 1
-        kevinKoh.team = 2; // team 2
+        //song king = position: (0, 0), moverange: 5, attackrange: 1, attack: 10, health: 100, team: 1
+        Hero songKing = new Hero(0, 0, 5, 1, 10, 100, 1);
+        Hero kevinKoh = new Hero(1, 1, 5, 1, 15, 200, 2);
 
         Hero[][] someHeroes = {{songKing, null, null}, {null, kevinKoh, null}, {null, null, null}};
         Boolean[][] someWalls = {{false, true, false}, {false, false, false}, {false, false, false}};
@@ -73,23 +68,24 @@ public class Map {
     */
         Map m = new Map(3, 3, someWalls, someHeroes);
 
-        System.out.print("Is Song alive? ");
-        System.out.println(songKing.isAlive());
-        System.out.print("Song's HP is now: ");
-        songKing.seeHP();
+        System.out.println("Is Song alive? " + songKing.isAlive());
+        System.out.println("Song's HP is now: " + songKing.getHP());
+
         System.out.println("Is Kevin in Song's attack range?: " + songKing.inAttackRange(kevinKoh));
         System.out.println("Is Kevin even attackable?: " + songKing.attackable(kevinKoh));
 
-        System.out.print("Kevin's HP is now: ");
-        kevinKoh.seeHP();
+        System.out.println("Kevin's HP is now: " + kevinKoh.getHP());
 
+        System.out.print("Song attacks... ");
         songKing.attack(kevinKoh);
 
         songKing.changeY(1);
+
+        System.out.print("Song attacks... ");
         songKing.attack(kevinKoh);
 
-        System.out.print("Kevin's HP is now: ");
-        kevinKoh.seeHP();
+        System.out.println("Kevin's HP is now: " + kevinKoh.getHP());
+
         System.out.println("He took " + songKing.damage + " damage.");
     }
 }

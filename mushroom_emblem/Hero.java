@@ -9,21 +9,21 @@ public class Hero {
     protected int attackRange;
     protected int damage;
     protected int hp;
-    protected int xPos;
-    protected int yPos;
+    protected int[] pos = new int[2];
 
     // Hero constructor
-    public Hero(int myMoveRange, int myAttackRange, int myDamage, int myHP) {
+    public Hero(int x, int y, int myMoveRange, int myAttackRange, int myDamage, int myHP, int t) {
         moveRange = myMoveRange;
         attackRange = myAttackRange;
         damage = myDamage;
         hp = myHP;
+        pos[0] = x; pos[1] = y;
+        team = t;
     }
 
     // See hero's hp
-    public void seeHP() {
-        int health = hp;
-        System.out.println(health);
+    public int getHP() {
+        return hp;
     }
 
     // Check if the unit is alive; if not, remove it from the map
@@ -43,7 +43,7 @@ public class Hero {
     }*/
 
     // Toggles the hero's movement for the turn.
-    public void move() {
+    public void alreadymoved() {
         if (hasMoved == true) {
             return;
         }
@@ -52,7 +52,7 @@ public class Hero {
 
     // Checks if the enemy is in attack range.
     public boolean inAttackRange(Hero enemy) {
-        if (((Math.abs(enemy.getX() - xPos) <= attackRange && enemy.getY() == yPos) || ((Math.abs(enemy.getY() - yPos) <= attackRange) && enemy.getX() == xPos))) {
+        if (((Math.abs(enemy.getX() - pos[0]) <= attackRange && enemy.getY() == pos[1]) || ((Math.abs(enemy.getY() - pos[1]) <= attackRange) && enemy.getX() == pos[0]))) {
             return true;
         }
         return false;
@@ -80,21 +80,21 @@ public class Hero {
     }
 
     public int getX() {
-        return xPos;
+        return pos[0];
     }
 
-    /** Change the old xPos to X. */
+    /** Change the old pos[0] to X. */
     public void changeX(int x) {
-        xPos = x;
+        pos[0] = x;
     }
 
     public int getY() {
-        return yPos;
+        return pos[1];
     }
 
-    /** Change the old xPos to Y. */
+    /** Change the old pos[1] to Y. */
     public void changeY(int y) {
-        yPos = y;
+        pos[1] = y;
     }
 
 }
