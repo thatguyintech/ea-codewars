@@ -32,18 +32,18 @@ public class Hero {
             return true;
         }
         else {
-            //remove();
+            remove();
             return false;
         }
     }
 
     // Method that calls the Game Master's remove method to remove the unit from the game.
-    /*private void remove() {
-        Map.remove(this);
-    }*/
+    private void remove() {
+        Player.remove(this);
+    }
 
     // Toggles the hero's movement for the turn.
-    public void alreadymoved() {
+    public void alreadyMoved() {
         if (hasMoved == true) {
             return;
         }
