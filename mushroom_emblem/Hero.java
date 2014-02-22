@@ -43,7 +43,7 @@ public class Hero {
     }*/
 
     // Toggles the hero's movement for the turn.
-    public void alreadymoved() {
+    public void alreadyMoved() {
         if (hasMoved == true) {
             return;
         }
