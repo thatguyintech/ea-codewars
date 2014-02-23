@@ -33,7 +33,7 @@ public class Map {
         }
     }
         
-    private Boolean[][] getWalls() {
+    public Boolean[][] getWalls() {
         return _walls;
     }
     
@@ -51,6 +51,15 @@ public class Map {
         }
         return false;
     }
+
+    private Boolean addHero(int x, int y, Hero h) {
+        if (!_heroBools[x][y]) {
+            _heroes[x][y] = h;
+            _heroBools[x][y] = true;
+            return true;
+        }
+        return false;
+    }    
 
     public static void main(String[] args) {
         //song king = position: (0, 0), moverange: 5, attackrange: 1, attack: 10, health: 100, team: "red"

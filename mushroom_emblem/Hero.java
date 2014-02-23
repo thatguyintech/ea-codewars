@@ -75,6 +75,10 @@ public class Hero {
         }
     }
 
+    public int getMoveRange() {
+        return moveRange;
+    }
+
     public int getX() {
         return pos[0];
     }
