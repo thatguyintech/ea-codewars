@@ -1,49 +1,12 @@
-Players:
--team
--Map
-    -matrix of Heroes
-
-what does the player do?
-    moves heroes (aka must check legality of moves too)
-        both on map
-        and on hero
-    makes heroes attack (check legality of attack) (heroes have these methods, player just calls them)
-    remove heroes
-    end turn
-    
-what do heroes do?
-    heroes perform attack
-    
-Game:
-    -initiates players (team) and map
-    -initiates heroes
-    -sets heroes to specific coordinates
-    -sets turns
-    -
-    
-public class Game {
-
-    public Player redPlayer;
-    public Player bluePlayer;
-    public Map gameMap;
-    
-    public Game(Player player1, Player player2, Map map) {
-        redPlayer = player1;
-        bluePlayer = player2;
-        gameMap = map;
-        redPlayer.isTurn = true;
-    }
-    
-}
-    
 public class Player {
 
     private Boolean isTurn;
     private String _team;
     private Map _map;
     private Hero[][] heroes;
-    private int numUnits;
+    private int numEnemyUnits;
     
+    // Player constructor.
     public Player(String team, Map m) {
         isTurn = false;
         _team = team;
@@ -51,18 +14,24 @@ public class Player {
         heroes = m.getHeroes()
     }
     
-    
+    // Player commands a hero to attack enemy hero
     public void makeAttack(Hero mushroom, Hero enemy) {
         mushroom.attack(enemy);
         if (enemy.isAlive() == false) {
             remove(enemy);
+            numEnemyUnits--;
+            if (numEnemyUnits == 0) {
+                Game.endGame();
+            }
         }
     }
 
+    // Player removes his/her hero from the map.
     public void remove(Hero mushroom) {
-        
+        Map.removeHero(mushroom.getX(), mushroom.getY());
     }
 
+    // Player ends his/her turn.
     public void endTurn() {
         isTurn = false;
         

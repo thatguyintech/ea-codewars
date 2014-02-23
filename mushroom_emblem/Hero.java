@@ -1,12 +1,10 @@
-
-
 public class Hero {
     protected boolean selected;
     protected boolean hasMoved;
     protected boolean hasAttacked;
     protected boolean isTurn;
     protected boolean isAlive;
-    protected String team;
+    protected String team; // either "red" or "blue"
     protected int moveRange;
     protected int attackRange;
     protected int damage;
@@ -84,6 +82,7 @@ public class Hero {
         pos[0] = x;
     }
 
+    // Get the Y-coordinate of this hero.
     public int getY() {
         return pos[1];
     }
@@ -93,6 +92,7 @@ public class Hero {
         pos[1] = y;
     }
 
+    // Get the X-coordinate of this hero.
     public void updatePos(int x, int y) {
         pos[0] = x;
         pos[1] = y;

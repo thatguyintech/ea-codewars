@@ -33,17 +33,17 @@ public class Map {
         }
     }
         
-    private Boolean[][] getWalls() {
+    public Boolean[][] getWalls() {
         return _walls;
     }
     
-    private Hero[][] getHeroes() {
+    public Hero[][] getHeroes() {
         return _heroes;
     }
     
     /** Removes the hero object at coordinate (X, Y). Returns false if there
       * wasn't a hero to remove in the first place. */
-    private Boolean removeHero(int x, int y) {
+    public Boolean removeHero(int x, int y) {
         if (_heroBools[x][y]) {
             _heroes[x][y] = null;
             _heroBools[x][y] = false;
@@ -61,7 +61,7 @@ public class Map {
         Boolean[][] someWalls = {{false, true, false}, {false, false, false}, {false, false, false}};
 
         //someHeroes.set(0, new ArrayList<Hero>(){songKing, null, null});
-        /**
+        /*
         someHeroes = [[songKing, null, null],[null, kevinKoh, null],[null, null, null]];
         Boolean[][] someWalls = new Hero[][];
         someWalls = [[false, true, false], [false, false, false], [false, false, false]];
