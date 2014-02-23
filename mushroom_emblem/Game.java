@@ -1,16 +1,19 @@
 public class Game {
 
-    public Player redPlayer;
-    public Player bluePlayer;
+    public static Player redPlayer;
+    public static Player bluePlayer;
     public Map gameMap;
-    public Hero[][] redHeroes;
-    public Hero[][] blueHeroes;
+    public Hero[][] heroes;
+    public Boolean[][] walls;
     
     // Game constructor
     public Game() {
-        gameMap = new Map(17, 10, /*WALLS*/, /*HEROES*/)
+        heroes = setHeroes();
+        gameMap = new Map(17, 10, walls, heroes);
         redPlayer = new Player("red", gameMap);
         bluePlayer = new Player("blue", gameMap);
+        redPlayer.numEnemyUnits = 6;
+        bluePlayer.numEnemyUnits = 6;
         redPlayer.isTurn = true;
     }
     
@@ -25,30 +28,34 @@ public class Game {
             bluePlayer.isTurn = false;
         }
     }
-    
+
     // Sets the heroes at their starting coordinates.
-    private void setHeroes() {
-        redHeroes = new Hero[gameMap.getWidth()][gameMap.getHeight()];
-        blueHeroes = new Hero[gameMap.getWidth()][gameMap.getHeight()];
+    private Hero[][] setHeroes() {
+        heroes = new Hero[17][10];
         // Using Kevin's coordinate system
-        redHeroes[16][3] = new Hero(16, 3, 5, 1, 2, 10, "red");
-        redHeroes[16][4] = new Hero(16, 4, 5, 1, 2, 10, "red");
-        redHeroes[16][6] = new Hero(16, 6, 5, 1, 2, 10, "red");
-        redHeroes[16][7] = new Hero(16, 7, 5, 1, 2, 10, "red");
-        redHeroes[16][2] = new Hero(16, 2, 5, 1, 2, 10, "red");
-        redHeroes[16][5] = new Hero(16, 5, 5, 1, 2, 10, "red");       
-        blueHeroes[3][1] = new Hero(3, 1, 5, 1, 2, 10, "blue");
-        blueHeroes[4][1] = new Hero(3, 1, 5, 1, 2, 10, "blue");
-        blueHeroes[6][1] = new Hero(3, 1, 5, 1, 2, 10, "blue");
-        blueHeroes[7][1] = new Hero(3, 1, 5, 1, 2, 10, "blue");
-        blueHeroes[4][3] = new Hero(3, 1, 5, 1, 2, 10, "blue");
-        blueHeroes[7][3] = new Hero(3, 1, 5, 1, 2, 10, "blue"); 
-        redPlayer.numEnemyUnits = 6;
-        bluePlayer.numEnemyUnits = 6;                                                                
+        heroes[16][3] = new Hero(16, 3, 5, 1, 2, 10, "red");
+        heroes[16][4] = new Hero(16, 4, 5, 1, 2, 10, "red");
+        heroes[16][6] = new Hero(16, 6, 5, 1, 2, 10, "red");
+        heroes[16][7] = new Hero(16, 7, 5, 1, 2, 10, "red");
+        heroes[16][2] = new Hero(16, 2, 5, 1, 2, 10, "red");
+        heroes[16][5] = new Hero(16, 5, 5, 1, 2, 10, "red");       
+        heroes[3][1] = new Hero(3, 1, 5, 1, 2, 10, "blue");
+        heroes[4][1] = new Hero(3, 1, 5, 1, 2, 10, "blue");
+        heroes[6][1] = new Hero(3, 1, 5, 1, 2, 10, "blue");
+        heroes[7][1] = new Hero(3, 1, 5, 1, 2, 10, "blue");
+        heroes[4][3] = new Hero(3, 1, 5, 1, 2, 10, "blue");
+        heroes[7][3] = new Hero(3, 1, 5, 1, 2, 10, "blue"); 
+        return heroes;                                                               
     }
 
     // Ends the game.
-    public void endGame() {
+    public static void endGame() {
         System.out.println("GAME OVER!");
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game();
+        System.out.println(redPlayer.move(redPlayer.heroes[16][3], 16, 1));
+
     }
 }

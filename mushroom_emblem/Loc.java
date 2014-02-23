@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class Loc {
 
     public List adjLoc = new LinkedList();
 
-    public Loc(int[] coordinates, String[] directions){
+    public Loc(int[] coordinates, ArrayList<String> directions){
         _position = coordinates;
         _directions = directions;
     }
