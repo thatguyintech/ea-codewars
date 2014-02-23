@@ -1,3 +1,5 @@
+
+
 public class Hero {
     protected boolean selected;
     protected boolean hasMoved;
@@ -32,14 +34,8 @@ public class Hero {
             return true;
         }
         else {
-            remove();
             return false;
         }
-    }
-
-    // Method that calls the Game Master's remove method to remove the unit from the game.
-    private void remove() {
-        Player.remove(this);
     }
 
     // Toggles the hero's movement for the turn.
@@ -94,6 +90,11 @@ public class Hero {
 
     /** Change the old pos[1] to Y. */
     public void changeY(int y) {
+        pos[1] = y;
+    }
+
+    public void updatePos(int x, int y) {
+        pos[0] = x;
         pos[1] = y;
     }
 
